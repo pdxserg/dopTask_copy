@@ -4,11 +4,14 @@ import {TaskType, Todolist} from './Todolist';
 import {v1} from 'uuid';
 
 export type FilterValuesType = "all" | "active" | "completed";
-type TodolistsType = { id: string, title: string, filter: FilterValuesType }
-type TasksType = {
-    [key: string]: TaskType[]
+type TodolistsType = { id: string, title: string,  }
+type TasksStateType = {
+    [key: string]:DataType
 }
-
+type DataType={
+    data:TaskType[]
+    filter: FilterValuesType
+}
 function App() {
     // let todolistID1 = v1();
     // let todolistID2 = v1();
@@ -38,7 +41,7 @@ function App() {
     let todolistId1 = v1();
     let todolistId2 = v1();
 
-    let [todolists, setTodolists] = useState<Array<TodolistType>>([
+    let [todolists, setTodolists] = useState<Array<TodolistsType>>([
         {id: todolistId1, title: "What to learn"},
         {id: todolistId2, title: "What to buy"}
     ])
@@ -69,21 +72,21 @@ function App() {
 
 
     function removeTask(todolistId: string, taskId: string) {
-        setTasks({...tasks, [todolistId]: tasks[todolistId].filter(el => el.id !== taskId)})
+    //    setTasks({...tasks, [todolistId]: tasks[todolistId].filter(el => el.id !== taskId)})
     }
 
     function addTask(todolistId: string, title: string) {
-        let newTask = {id: v1(), title: title, isDone: false};
-        setTasks({...tasks, [todolistId]: [...tasks[todolistId], newTask]})
+        // let newTask = {id: v1(), title: title, isDone: false};
+        // setTasks({...tasks, [todolistId]: [...tasks[todolistId], newTask]})
         // let newTasks = [task, ...tasks];
         // setTasks(newTasks);
     }
 
     function changeStatus(todolistId: string, taskId: string, newIsDone: boolean) {
-        setTasks({
-            ...tasks,
-            [todolistId]: tasks[todolistId].map(el => el.id === taskId ? {...el, isDone: newIsDone} : el)
-        })
+        // setTasks({
+        //     ...tasks,
+        //     [todolistId]: tasks[todolistId].map(el => el.id === taskId ? {...el, isDone: newIsDone} : el)
+        // })
     }
 
     function changeFilter(todolistId: string, value: FilterValuesType) {
