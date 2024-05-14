@@ -80,6 +80,7 @@ function App() {
 
     function addTask(todolistId: string, title: string) {
      let newTask = {id: v1(), title: title, isDone: false};
+        console.log(Object.keys(tasks))
      setTasks({...tasks,
          [todolistId]:{...tasks[todolistId],data:[...tasks[todolistId].data, newTask]} })
         // let newTasks = [task, ...tasks];
@@ -87,14 +88,22 @@ function App() {
     }
 
     function changeStatus(todolistId: string, taskId: string, newIsDone: boolean) {
-        // setTasks({
-        //     ...tasks,
-        //     [todolistId]: tasks[todolistId].map(el => el.id === taskId ? {...el, isDone: newIsDone} : el)
-        // })
+        setTasks({
+            ...tasks,
+            [todolistId]:{...tasks[todolistId],data: tasks[todolistId].data.map(el => el.id === taskId ? {...el, isDone: newIsDone} : el) }
+        })
     }
 
     function changeFilter(todolistId: string, value: FilterValuesType) {
-      // setTasks(tasks[todolistId].data.map(el => el.id = todolistId ?{...el, filter: value} : el))
+        // setTasks({
+        //     ...tasks,
+        //     [todolistId]:{...tasks[todolistId],data: tasks[todolistId].data.map(el => el.id === todolistId ? {...el, filter: value} : el) }
+        // })
+      // setTasks(...tasks,
+      //     [todolistId]:{tasks[todolistId].data.map(el => el.id = todolistId ?{...tasks[todolistId], filter: value} : el)}
+      // )
+        setTasks({...tasks, [todolistId]:{...tasks[todolistId],filter:value}})
+
         // setTodolists(todolists.map(el => el.id === todolistId ? {...el, filter: value} : el))
     }
 
