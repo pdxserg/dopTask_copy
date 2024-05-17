@@ -178,7 +178,7 @@ function App() {
 
     function addTask(title: string, todolistId: string) {
     let task = {taskId: v1(), title: title, isDone: false};
-     //   setTodoFromServer(todoFromServer.map(t =>t.todolistId ===todolistId ?{...t, tasks:[task,...t.tasks ]} :t))
+       setTodoFromServer(todoFromServer.map(t =>t.todolistId ===todolistId ?{...t, tasks:[task,...t.tasks ]} :t))
 
         // // //достанем нужный массив по todolistId:
          //let todolistTasks = todoFromServer.map(t=>t.todolistId === todolistId)
@@ -189,10 +189,17 @@ function App() {
     }
 
     function changeStatus(id: string, isDone: boolean, todolistId: string) {
+
+        setTodoFromServer(todoFromServer.map(t =>t.todolistId ===todolistId ?
+            {...t, tasks:t.tasks.map(el=>el.taskId ===id ?
+                    {...el, isDone:isDone }
+                    :el)}
+            :t))
         // //достанем нужный массив по todolistId:
-        // let todolistTasks = tasks[todolistId];
-        // // найдём нужную таску:
-        // let task = todolistTasks.find(t => t.id === id);
+        // let todolistTasks = todoFromServer.map(t =>t.todolistId ===todolistId)
+        // // // найдём нужную таску:
+        // let task = todolistTasks.tasks.map(()=>{})
+        //let task = todolistTasks.find(t => t. === id);
         // //изменим таску, если она нашлась
         // if (task) {
         //     task.isDone = isDone;
@@ -210,6 +217,9 @@ function App() {
     }
 
     function removeTodolist(id: string) {
+        setTodoFromServer(todoFromServer.filter(t=>t.todolistId !== id))
+        delete
+        console.log(todoFromServer)
         // // засунем в стейт список тудулистов, id которых не равны тому, который нужно выкинуть
         // setTodolists(todolists.filter(tl => tl.id != id));
         // // удалим таски для этого тудулиста из второго стейта, где мы храним отдельно таски
