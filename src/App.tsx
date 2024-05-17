@@ -192,7 +192,7 @@ function App() {
 
         setTodoFromServer(todoFromServer.map(t =>t.todolistId ===todolistId ?
             {...t, tasks:t.tasks.map(el=>el.taskId ===id ?
-                    {...el, isDone:isDone }
+                    {...el, isDone: isDone }
                     :el)}
             :t))
         // //достанем нужный массив по todolistId:
