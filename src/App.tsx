@@ -218,7 +218,7 @@ function App() {
 
     function removeTodolist(id: string) {
         setTodoFromServer(todoFromServer.filter(t=>t.todolistId !== id))
-        delete
+
         console.log(todoFromServer)
         // // засунем в стейт список тудулистов, id которых не равны тому, который нужно выкинуть
         // setTodolists(todolists.filter(tl => tl.id != id));
