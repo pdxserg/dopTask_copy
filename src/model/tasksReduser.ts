@@ -1,4 +1,5 @@
 import {TaskType} from "../App";
+import {v1} from "uuid";
 
 
 
@@ -9,10 +10,20 @@ export const tasksReduser= (state: TaskType [], action: AactionsType):TaskType [
 
 	switch (action.type){
 		case "REMOVE-TASK":{
-			return state
+			return state.filter((task) => {
+				return task.id !== action.payload.id
+			})
+
 		}
 		case "ADD-TASK":{
-			return state
+
+			const newTask = {
+					id: v1(),
+					title: action.payload.title,
+					isDone: false
+				}
+			return [newTask, ...state]
+
 		}
 
 		default:
