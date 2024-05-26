@@ -1,7 +1,8 @@
 import './App.css';
 import {Todolist} from "./Todolist";
-import {useState} from "react";
+import {useReducer, useState} from "react";
 import {v1} from "uuid";
+import {tasksReduser} from "./model/tasksReduser";
 
 export type TaskType = {
 	id: string
@@ -13,11 +14,17 @@ export type FilterValuesType = 'all' | 'active' | 'completed'
 
 function App() {
 
-	const [tasks, setTasks] = useState<TaskType[]>([
+	// const [tasks, setTasks] = useState<TaskType[]>([
+// 		{id: v1(), title: 'HTML&CSS', isDone: true},
+// 		{id: v1(), title: 'JS', isDone: true},
+// 		{id: v1(), title: 'ReactJS', isDone: false},
+// 	])
+	const [tasks, setTasks] = useReducer(tasksReduser,[
 		{id: v1(), title: 'HTML&CSS', isDone: true},
 		{id: v1(), title: 'JS', isDone: true},
 		{id: v1(), title: 'ReactJS', isDone: false},
 	])
+
 
 	const [filter, setFilter] = useState<FilterValuesType>('all')
 
