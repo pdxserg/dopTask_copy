@@ -4,22 +4,29 @@ import {TaskType} from "../App";
 
 
 
-// type AactionsType=
-export const tasksReduser= (state: TaskType [], action: any):TaskType []=>{
+
+export const tasksReduser= (state: TaskType [], action: AactionsType):TaskType []=>{
 
 	switch (action.type){
-		case "WWW":{
+		case "REMOVE-TASK":{
 			return state
 		}
+		case "ADD-TASK":{
+			return state
+		}
+
 		default:
 			throw new Error("WWW")
 	}
 
 }
+type AactionsType=RemovetaskType|AddtaskType
 
+type RemovetaskType= ReturnType<typeof removeTaskAC>
+type AddtaskType= ReturnType<typeof AddTaskAC>
 export const removeTaskAC=(id:string)=>{
 	return{
-		type:"",
+		type:"REMOVE-TASK",
 		payload:{
 			id
 		}
@@ -27,7 +34,7 @@ export const removeTaskAC=(id:string)=>{
 }
 export const AddTaskAC=(title:string)=>{
 	return{
-		type:"",
+		type:"ADD-TASK",
 		payload:{
 			title
 		}
