@@ -1,4 +1,4 @@
-import {TaskType} from "../App";
+import {FilterValuesType, TaskType} from "../App";
 import {v1} from "uuid";
 
 
@@ -25,13 +25,17 @@ export const tasksReduser= (state: TaskType [], action: AactionsType):TaskType [
 			return [newTask, ...state]
 
 		}
+		case "FILTER":{
+			return
+		}
+
 
 		default:
 			throw new Error("WWW")
 	}
 
 }
-type AactionsType=RemovetaskType|AddtaskType
+type AactionsType=RemovetaskType|AddtaskType|ChangeFilterType
 
 type RemovetaskType= ReturnType<typeof removeTaskAC>
 type AddtaskType= ReturnType<typeof AddTaskAC>
@@ -49,5 +53,15 @@ export const AddTaskAC=(title:string)=>{
 		payload:{
 			title
 		}
+	} as const
+}
+type ChangeFilterType = ReturnType<typeof changeFilterAC>
+export const changeFilterAC=(filter: FilterValuesType)=>{
+	return{
+		type:"FILTER",
+		payload:{
+			filter
+		}
+
 	} as const
 }
