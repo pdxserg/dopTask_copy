@@ -17,14 +17,14 @@ function App() {
 				</div>
 				<div className={styles.content}>
 					<Routes>
+						<Route element={<PageOne/>} path="/"/>
+						<Route element={<PageOne/>} path="/1"/>
+						<Route element={<PageTwo/>} path="/2"/>
+						<Route element={<Error404/>} path="/3"/>
 
-						<Route element={<PageOne />} path="/1" errorElement={<Error404/>} />
-						<Route element={<PageTwo />} path="/2"/>
-						<Route element={<Error404 />} path="/3"/>
 
-
-						<Route path ="/*" element={<Navigate to={"error404"}/>}/>
-						<Route element={<Error404 />} path="error404"/>
+						{/*<Route path ="/*" element={<Navigate to={"error404"}/>}/>*/}
+						{/*<Route element={<Error404 />} path="error404"/>*/}
 
 
 					</Routes>
