@@ -1,76 +1,23 @@
-import './App.css';
-import {Todolist} from "./Todolist";
-import {useReducer, useState} from "react";
-import {v1} from "uuid";
-import {AddTaskAC, removeTaskAC, tasksReduser} from "./model/tasksReduser";
+import React, {useState} from 'react';
+import styles from "./components/Site.module.css";
 
-export type TaskType = {
-	id: string
-	title: string
-	isDone: boolean
-}
-
-export type FilterValuesType = 'all' | 'active' | 'completed'
 
 function App() {
-
-	// const [tasks, setTasks] = useState<TaskType[]>([
-// 		{id: v1(), title: 'HTML&CSS', isDone: true},
-// 		{id: v1(), title: 'JS', isDone: true},
-// 		{id: v1(), title: 'ReactJS', isDone: false},
-// 	])
-	const [tasks, dispatchTasks] = useReducer(tasksReduser,[
-		{id: v1(), title: 'HTML&CSS', isDone: true},
-		{id: v1(), title: 'JS', isDone: true},
-		{id: v1(), title: 'ReactJS', isDone: false},
-	])
-
-
-	const [filter, setFilter] = useState<FilterValuesType>('all')
-
-	const removeTask = (taskId: string) => {
-		dispatchTasks(removeTaskAC(taskId))
-		// const filteredTasks = tasks.filter((task) => {
-		// 	return task.id !== taskId
-		// })
-		// setTasks(filteredTasks)
-	}
-
-	const addTask = (title: string)=> {
-		dispatchTasks(AddTaskAC(title))
-		// const newTask = {
-		// 	id: v1(),
-		// 	title: title,
-		// 	isDone: false
-		// }
-		// const newTasks = [newTask, ...tasks]
-		// setTasks(newTasks)
-	}
-
-	const changeFilter = (filter: FilterValuesType) => {
-		setFilter(filter)
-	}
-
-	let tasksForTodolist = tasks
-	if (filter === 'active') {
-		tasksForTodolist = tasks.filter(task => !task.isDone)
-	}
-
-	if (filter === 'completed') {
-		tasksForTodolist = tasks.filter(task => task.isDone)
-	}
-
-	return (
-		<div className="App">
-			<Todolist
-				title="What to learn"
-				tasks={tasksForTodolist}
-				removeTask={removeTask}
-				changeFilter={changeFilter}
-				addTask={addTask}
-			/>
-		</div>
-	);
+    return (
+        <div>
+            <div className={styles.header}><h1>HEADER</h1></div>
+            <div className={styles.body}>
+                <div className={styles.nav}>
+                    Здесь будет навигация
+                </div>
+                <div className={styles.content}>
+                    Здесь будут кроссовки
+                </div>
+            </div>
+            <div className={styles.footer}>abibas 2023</div>
+        </div>
+    );
 }
+
 
 export default App;
