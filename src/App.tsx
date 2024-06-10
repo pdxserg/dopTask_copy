@@ -3,7 +3,7 @@ import styles from "./components/Site.module.css";
 import {PageOne} from "./components/pages/PageOne";
 import {PageTwo} from "./components/pages/PageTwo";
 import {PageThree} from "./components/pages/PageThree";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import {Error404} from "./components/pages/Error404";
 
 
@@ -20,9 +20,11 @@ function App() {
 
 						<Route element={<PageOne />} path="/1" errorElement={<Error404/>} />
 						<Route element={<PageTwo />} path="/2"/>
-						<Route element={<PageThree />} path="/3"/>
-						<Route element={<Error404 />} path ="/*"/>
+						<Route element={<Error404 />} path="/3"/>
 
+
+						<Route path ="/*" element={<Navigate to={"error404"}/>}/>
+						<Route element={<Error404 />} path="error404"/>
 
 
 					</Routes>
