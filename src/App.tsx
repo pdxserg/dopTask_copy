@@ -13,25 +13,9 @@ function App() {
 			<div className={styles.header}><h1>HEADER</h1></div>
 			<div className={styles.body}>
 				<div className={styles.nav}>
-					<div><NavLink to={"/1"} style={({isActive, isPending, isTransitioning}) => {
-							return {
-								fontWeight: isActive ? "bold" : "",
-								color: isPending ? "red" : "black",
-								viewTransitionName: isTransitioning ? "slide" : "",};}}>Adidas</NavLink></div>
-					<div><NavLink to={"/2"} style={({isActive, isPending, isTransitioning}) => {
-						return {
-							fontWeight: isActive ? "bold" : "",
-							color: isPending ? "red" : "black",
-							viewTransitionName: isTransitioning ? "slide" : "",
-						};
-					}}>Puma</NavLink></div>
-					<div><NavLink to={"/3"} style={({isActive, isPending, isTransitioning}) => {
-						return {
-							fontWeight: isActive ? "bold" : "",
-							color: isPending ? "red" : "black",
-							viewTransitionName: isTransitioning ? "slide" : "",
-						};
-					}}>Nick</NavLink></div>
+					<div><NavLink to={"/1"} className={({isActive})=>isActive? "pending":""}>Adidas</NavLink></div>
+					<div><NavLink to={"/2"} className={({isActive})=>isActive? "active":""}>Puma</NavLink></div>
+					<div><NavLink to={"/3"} className={({isActive})=>isActive? "active":""}>Nick</NavLink></div>
 
 				</div>
 				<div className={styles.content}>
