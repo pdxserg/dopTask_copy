@@ -5,6 +5,7 @@ import {PageTwo} from "./components/pages/PageTwo";
 import {PageThree} from "./components/pages/PageThree";
 import {Link, Navigate, NavLink, Route, Routes} from "react-router-dom";
 import {Error404} from "./components/pages/Error404";
+import styled from "styled-components";
 
 
 function App() {
@@ -13,9 +14,15 @@ function App() {
 			<div className={styles.header}><h1>HEADER</h1></div>
 			<div className={styles.body}>
 				<div className={styles.nav}>
-					<div><NavLink to={"/1"} className={({isActive})=>isActive? styles.active :styles.noactive}>Adidas</NavLink></div>
-					<div><NavLink to={"/2"} className={({isActive})=>isActive? styles.active:styles.noactive}>Puma</NavLink></div>
-					<div><NavLink to={"/3"} className={({isActive})=>isActive? styles.active:styles.noactive}>Nick</NavLink></div>
+					<NavWrapper><NavLink to={"/1"}
+					                      // className={({isActive})=>isActive? styles.active :styles.noactive}
+					>Adidas</NavLink></NavWrapper>
+					<NavWrapper><NavLink to={"/2"}
+					              // className={({isActive})=>isActive? styles.active:styles.noactive}
+					>Puma</NavLink></NavWrapper>
+					<NavWrapper><NavLink to={"/3"}
+					              // className={({isActive})=>isActive? styles.active:styles.noactive}
+					>Nick</NavLink></NavWrapper>
 
 				</div>
 				<div className={styles.content}>
@@ -40,3 +47,17 @@ function App() {
 
 
 export default App;
+
+const NavWrapper= styled.div`
+    margin-left: 10px;
+    font-size: 20px;
+	
+	& > a {
+		text-decoration: none;
+		color: #61dafb;
+	}
+	& > a:hover {
+		color: steelblue;
+	}
+
+`
