@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from "./components/Site.module.css";
 import {PageOne} from "./components/pages/PageOne";
 import {PageTwo} from "./components/pages/PageTwo";
 import {PageThree} from "./components/pages/PageThree";
-import {Link, Navigate, NavLink, Route, Routes} from "react-router-dom";
+import {Navigate, NavLink, Route, Routes} from "react-router-dom";
 import {Error404} from "./components/pages/Error404";
-import styled from "styled-components";
+import {NavWrapper} from "./_styles";
 
 
 function App() {
@@ -48,16 +48,3 @@ function App() {
 
 export default App;
 
-const NavWrapper= styled.div`
-    margin-left: 10px;
-    font-size: 20px;
-	
-	& > a {
-		text-decoration: none;
-		color: #61dafb;
-	}
-	& > a:hover {
-		color: steelblue;
-	}
-
-`
