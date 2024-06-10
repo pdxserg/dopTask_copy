@@ -13,9 +13,9 @@ function App() {
 			<div className={styles.header}><h1>HEADER</h1></div>
 			<div className={styles.body}>
 				<div className={styles.nav}>
-					<div><NavLink to={"/1"} className={({isActive})=>isActive? styles.active:""}>Adidas</NavLink></div>
-					<div><NavLink to={"/2"} className={({isActive})=>isActive? styles.active:""}>Puma</NavLink></div>
-					<div><NavLink to={"/3"} className={({isActive})=>isActive? styles.active:""}>Nick</NavLink></div>
+					<div><NavLink to={"/1"} className={({isActive})=>isActive? styles.active :styles.noactive}>Adidas</NavLink></div>
+					<div><NavLink to={"/2"} className={({isActive})=>isActive? styles.active:styles.noactive}>Puma</NavLink></div>
+					<div><NavLink to={"/3"} className={({isActive})=>isActive? styles.active:styles.noactive}>Nick</NavLink></div>
 
 				</div>
 				<div className={styles.content}>
