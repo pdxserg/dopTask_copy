@@ -1,57 +1,74 @@
-import React from 'react';
-import styles from "./components/Site.module.css";
-import {PageOne} from "./components/pages/PageOne";
-import {PageTwo} from "./components/pages/PageTwo";
-import {PageThree} from "./components/pages/PageThree";
-import {Navigate, NavLink, Route, Routes} from "react-router-dom";
-import {Error404} from "./components/pages/Error404";
-import {NavWrapper} from "./_styles";
+import React, {useReducer, useState} from 'react';
+import './App.css';
+import {TaskType, Todolist} from './Todolist';
+import {v1} from 'uuid';
+import {AddItemForm} from './AddItemForm';
+import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
+import {Menu} from "@mui/icons-material";
+import {
+    addTodolistAC
+} from './state/todolists-reducer';
 
-const PATH = {
-	PAGE1: '/page1',
-	PAGE2: '/page2',
-	PAGE3: '/page3',
-	ERROR404: '/page/error404'
-} as const
+import {useDispatch, useSelector} from 'react-redux';
+import {AppRootStateType} from './state/store';
 
-function App() {
-	return (
-		<div>
-			<div className={styles.header}><h1>HEADER</h1></div>
-			<div className={styles.body}>
-				<div className={styles.nav}>
-					<NavWrapper><NavLink to={PATH.PAGE1}
-						// className={({isActive})=>isActive? styles.active :styles.noactive}
-					>Adidas</NavLink></NavWrapper>
-					<NavWrapper><NavLink to={PATH.PAGE2}
-						// className={({isActive})=>isActive? styles.active:styles.noactive}
-					>Puma</NavLink></NavWrapper>
-					<NavWrapper><NavLink to={PATH.PAGE3}
-						// className={({isActive})=>isActive? styles.active:styles.noactive}
-					>Nick</NavLink></NavWrapper>
+export type FilterValuesType = "all" | "active" | "completed";
+export type TodolistType = {
+    id: string
+    title: string
+    filter: FilterValuesType
+}
 
-				</div>
-				<div className={styles.content}>
-					<Routes>
-						<Route path="/" element={<Navigate to={PATH.PAGE1}/>}/>
-						<Route element={<PageOne/>} path={PATH.PAGE1}/>
-						<Route element={<PageTwo/>} path={PATH.PAGE2}/>
-						<Route element={<PageThree/>} path={PATH.PAGE3}/>
-
-						<Route  path="/*" element={<Error404/>}> </Route>
-
-						{/*<Route path="/*" element={<Navigate to={PATH.ERROR404}/>}/>*/}
-						{/*<Route element={<Error404/>} path={PATH.ERROR404}/>*/}
-
-					</Routes>
-
-				</div>
-			</div>
-			<div className={styles.footer}>abibas 2023</div>
-		</div>
-	);
+export type TasksStateType = {
+    [key: string]: Array<TaskType>
 }
 
 
-export default App;
+function App() {
 
+    const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists)
+    // const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
+
+    const dispatch = useDispatch();
+
+    function addTodolist(title: string) {
+        dispatch( addTodolistAC(title))
+    }
+
+    return (
+        <div className="App">
+
+
+                <div>
+                    <AddItemForm addItem={addTodolist}/>
+                </div>
+                <div>
+                    {
+                        todolists.map(tl => {
+                            // let allTodolistTasks = tasks[tl.id];
+                            // let tasksForTodolist = allTodolistTasks;
+                            //
+                            // if (tl.filter === "active") {
+                            //     tasksForTodolist = allTodolistTasks.filter(t => t.isDone === false);
+                            // }
+                            // if (tl.filter === "completed") {
+                            //     tasksForTodolist = allTodolistTasks.filter(t => t.isDone === true);
+                            // }
+
+                            return <div  key={tl.id}>
+                                    <Todolist
+                                        id={tl.id}
+                                        title={tl.title}
+                                        // tasks={tasksForTodolist}
+                                        filter={tl.filter}
+                                    />
+
+                            </div>
+                        })
+                    }
+                </div>
+        </div>
+    );
+}
+
+export default App;
