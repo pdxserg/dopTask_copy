@@ -1,74 +1,46 @@
-import React, {useReducer, useState} from 'react';
-import './App.css';
-import {TaskType, Todolist} from './Todolist';
-import {v1} from 'uuid';
-import {AddItemForm} from './AddItemForm';
-import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
-import {Menu} from "@mui/icons-material";
-import {
-    addTodolistAC
-} from './state/todolists-reducer';
+import React from 'react';
+import {Navigate, NavLink, Route, Routes} from 'react-router-dom';
+import {Error404} from "./components/pages/Error404";
+import {PageOne} from "./components/pages/PageOne";
+import {PageTwo} from "./components/pages/PageTwo";
+import {PageThree} from "./components/pages/PageThree";
+import styles from "./components/Site.module.css";
+import {S} from './components/pages/_styles';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType} from './state/store';
 
-export type FilterValuesType = "all" | "active" | "completed";
-export type TodolistType = {
-    id: string
-    title: string
-    filter: FilterValuesType
-}
-
-export type TasksStateType = {
-    [key: string]: Array<TaskType>
-}
-
+const PATH = {
+    PAGE1: '/page1',
+    PAGE2: '/page2',
+    PAGE3: '/page3',
+} as const;
 
 function App() {
-
-    const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists)
-    // const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
-
-    const dispatch = useDispatch();
-
-    function addTodolist(title: string) {
-        dispatch( addTodolistAC(title))
-    }
-
     return (
-        <div className="App">
-
-
-                <div>
-                    <AddItemForm addItem={addTodolist}/>
+        <div>
+            <div className={styles.header}><h1>HEADER</h1></div>
+            <div className={styles.body}>
+                <div className={styles.nav}>
+                    <S.NavWrapper><NavLink to={PATH.PAGE1}>Page1</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE2}>Page2</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE3}>Page3</NavLink></S.NavWrapper>
+                    <a href="page3">page3 HTML</a>
                 </div>
-                <div>
-                    {
-                        todolists.map(tl => {
-                            // let allTodolistTasks = tasks[tl.id];
-                            // let tasksForTodolist = allTodolistTasks;
-                            //
-                            // if (tl.filter === "active") {
-                            //     tasksForTodolist = allTodolistTasks.filter(t => t.isDone === false);
-                            // }
-                            // if (tl.filter === "completed") {
-                            //     tasksForTodolist = allTodolistTasks.filter(t => t.isDone === true);
-                            // }
+                <div className={styles.content}>
+                    <Routes>
+                        <Route path={'/'} element={<Navigate to={'/page1'}/>}/>
 
-                            return <div  key={tl.id}>
-                                    <Todolist
-                                        id={tl.id}
-                                        title={tl.title}
-                                        // tasks={tasksForTodolist}
-                                        filter={tl.filter}
-                                    />
+                        <Route path={PATH.PAGE1} element={<PageOne/>}/>
+                        <Route path={PATH.PAGE2} element={<PageTwo/>}/>
+                        <Route path={PATH.PAGE3} element={<PageThree/>}/>
 
-                            </div>
-                        })
-                    }
+                        <Route path={'/*'} element={<Error404/>}/>
+                    </Routes>
                 </div>
+            </div>
+            <div className={styles.footer}>abibas 2023</div>
         </div>
     );
 }
 
 export default App;
+
