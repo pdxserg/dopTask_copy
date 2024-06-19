@@ -8,9 +8,9 @@ import {Error404} from "./components/pages/Error404";
 import {NavWrapper} from "./_styles";
 
 const PATH = {
-	PAGE1: '/page1',
-	PAGE2: '/page2',
-	PAGE3: '/page3',
+	PAGE1: '/Adidas',
+	PAGE2: '/Puma',
+	PAGE3: '/Nike',
 	ERROR404: '/page/error404'
 } as const
 
