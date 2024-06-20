@@ -10,15 +10,15 @@ export const Model = () => {
 	const params = useParams()
 	console.log(params)
 	let der = adidasArr.find(m =>m.id === params.id )
-	debugger
+	// debugger
 	return (
 		<div>
-			{/*<h2>{der? der.model: "jjjj"}</h2>*/}
-			<h2>{models[params.id].price}</h2>
-			{/*<h2>{models[Number(params.id) - 1].collection}</h2>*/}
-			{/*<img src={models[Number(params.id) - 1].picture}*/}
-			{/*      alt ={models[Number(params.id) - 1].model}*/}
-			{/*     style={{marginRight: "15px", width: "500px", height: "500px"}}/>*/}
+			<h2>{der ? der.model : "Nothig here"}</h2>
+			{/*<h2>{models[Number(params.id) - 1]?models[Number(params.id) - 1].model: 'eeee'}</h2>*/}
+			<h2>{der?.price }</h2>
+			<img src={der?.picture}
+			     alt={der?.model}
+			     style={{marginRight: "15px", width: "500px", height: "500px"}}/>
 
 		</div>
 
