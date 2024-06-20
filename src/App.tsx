@@ -6,11 +6,13 @@ import {Nike} from "./components/pages/Nike";
 import {Navigate, NavLink, Route, Routes} from "react-router-dom";
 import {Error404} from "./components/pages/Error404";
 import {NavWrapper} from "./_styles";
+import {Model} from "./components/pages/Model";
 
 const PATH = {
 	PAGE1: '/Adidas',
 	PAGE2: '/Puma',
 	PAGE3: '/Nike',
+	PAGE4: '/adidas/model',
 	ERROR404: '/page/error404'
 } as const
 
@@ -28,7 +30,7 @@ function App() {
 					>Puma</NavLink></NavWrapper>
 					<NavWrapper><NavLink to={PATH.PAGE3}
 						// className={({isActive})=>isActive? styles.active:styles.noactive}
-					>Nick</NavLink></NavWrapper>
+					>Nike</NavLink></NavWrapper>
 
 				</div>
 				<div className={styles.content}>
@@ -37,6 +39,7 @@ function App() {
 						<Route element={<Adidas/>} path={PATH.PAGE1}/>
 						<Route element={<Puma/>} path={PATH.PAGE2}/>
 						<Route element={<Nike/>} path={PATH.PAGE3}/>
+						<Route element={<Model/>} path={PATH.PAGE4}/>
 
 						<Route  path="/*" element={<Error404/>}> </Route>
 

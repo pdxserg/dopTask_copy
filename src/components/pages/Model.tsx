@@ -1,7 +1,16 @@
 import React from "react"
+import {  adidasArr} from "./Adidas";
 
-export const Model =()=>{
-	return(
-		<div>Model</div>
+
+const models = adidasArr
+
+
+export const Model = () => {
+
+	return (
+		<div>
+			Model
+		</div>
 	)
 }
+
