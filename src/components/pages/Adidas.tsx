@@ -5,14 +5,14 @@ import adidasModel3 from './../../assets/PostMove_Mid_Cloudfoam_Super_Lifestyle_
 import {Link } from "react-router-dom";
 
 
-export type AdidasItem = {
+export type SnikersItem = {
     id: string
     model: string;
     collection: string;
     price: string;
     picture: string;
 }
-export const adidasArr: AdidasItem[] = [
+export const adidasArr: SnikersItem[] = [
     {
         id:"1",
         model: 'ADIDAS ADIFOM TRXN',

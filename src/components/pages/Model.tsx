@@ -1,15 +1,17 @@
 import React from "react"
-import {  adidasArr} from "./Adidas";
+import {adidasArr, SnikersItem} from "./Adidas";
 import {useParams} from "react-router-dom";
 
 
 const models = adidasArr
+type ModelPropsType={
+	array:SnikersItem[]
+}
 
-
-export const Model = () => {
+export const Model = (props: ModelPropsType) => {
 	const params = useParams()
 	console.log(params)
-	let description = adidasArr.find(m =>m.id === params.id )
+	let description = props.array.find(m =>m.id === params.id )
 	// debugger
 	return (
 		<div>

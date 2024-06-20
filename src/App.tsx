@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from "./components/Site.module.css";
-import {Adidas} from "./components/pages/Adidas";
+import {Adidas, adidasArr} from "./components/pages/Adidas";
 import {Puma} from "./components/pages/Puma";
-import {Nike} from "./components/pages/Nike";
+import {Nike, nikeArr} from "./components/pages/Nike";
 import {Navigate, NavLink, Route, Routes} from "react-router-dom";
 import {Error404} from "./components/pages/Error404";
 import {NavWrapper} from "./_styles";
@@ -40,7 +40,8 @@ function App() {
 						<Route element={<Puma/>} path={PATH.PAGE2}/>
 						<Route element={<Nike/>} path={PATH.PAGE3}/>
 
-						<Route path={'/adidas/:id'}  element={<Model/>} />
+						<Route path={'/adidas/:id'}  element={<Model array={adidasArr}/>} />
+						<Route path={'/Nike/:id'}  element={<Model array={nikeArr}/>} />
 
 						<Route  path="/*" element={<Error404/>}> </Route>
 
