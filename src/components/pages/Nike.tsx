@@ -9,7 +9,7 @@ import {SnikersItem} from "./Adidas";
 
 export const nikeArr: SnikersItem[] = [
 	{
-		id: "1rrr",
+		id: "1",
 		model: '1NIKE ADIFOM TRXN',
 		collection: 'new collection1',
 		price: '100200$',
@@ -17,14 +17,14 @@ export const nikeArr: SnikersItem[] = [
 
 	},
 	{
-		id: "2rrr",
+		id: "2",
 		model: '2NIKE ADIFOM SUPER',
 		collection: 'new collection22',
 		price: '200300$',
 		picture: nikeModel2
 	},
 	{
-		id: "3rr",
+		id: "3",
 		model: '3NIKE SUPER SUPERSKI',
 		collection: 'new collection333',
 		price: '300400$',
