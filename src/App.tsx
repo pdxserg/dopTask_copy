@@ -40,7 +40,7 @@ function App() {
 						<Route element={<Nike/>} path={PATH.PAGE3}/>
 
 						<Route path={'/:brend/:id/'}  element={<Model  />} />
-						<Route path={'/:adidas/:id'}  element={<Model  />} />
+
 
 						<Route  path="/*" element={<Error404/>}> </Route>
 

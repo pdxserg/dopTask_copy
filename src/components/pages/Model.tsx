@@ -9,17 +9,19 @@ const models = adidasArr
 // 	array: SnikersItem[]
 // }
 
+
+
 export const Model = ( ) => {
 	// debugger
-	const params = useParams()
-	console.log(params.id)
-	console.log(params.brend)
+	const {id, brend} = useParams()
+	console.log( id)
+	console.log( brend)
 	// debugger
 	let array =adidasArr
-	if(params.brend === "nike")array = nikeArr
-	if(params.brend === "adidas")array = adidasArr
-	// debugger
-	let description = array.find(m => m.id === params.id)
+	if( brend === "nike")array = nikeArr
+	if( brend === "adidas")array = adidasArr
+	// // debugger
+	  let description = array.find(m => m.id ===  id)
 	 // debugger
 	return (
 		<div>
