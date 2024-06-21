@@ -1,7 +1,7 @@
 import React from 'react';
-import nikeModel1 from "../../assets/nike1.png";
-import nikeModel2 from "../../assets/nike2.png"
-import nikeModel3 from "../../assets/nike3.webp"
+import nikeModel1 from "../../assets/nike/nike1.png";
+import nikeModel2 from "../../assets/nike/nike2.png"
+import nikeModel3 from "../../assets/nike/nike3.webp"
 import {Link} from "react-router-dom";
 import {SnikersItem} from "./Adidas";
 
