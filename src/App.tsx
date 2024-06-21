@@ -9,10 +9,9 @@ import {NavWrapper} from "./_styles";
 import {Model} from "./components/pages/Model";
 
 const PATH = {
-	PAGE1: '/Adidas',
-	PAGE2: '/Puma',
-	PAGE3: '/Nike',
-	PAGE4: '/adidas/:id',
+	PAGE1: '/adidas',
+	PAGE2: '/puma',
+	PAGE3: '/nike',
 	ERROR404: '/page/error404'
 } as const
 
@@ -40,8 +39,8 @@ function App() {
 						<Route element={<Puma/>} path={PATH.PAGE2}/>
 						<Route element={<Nike/>} path={PATH.PAGE3}/>
 
-						<Route path={'/adidas/:id'}  element={<Model array={adidasArr}/>} />
-						<Route path={'/Nike/:id'}  element={<Model array={nikeArr}/>} />
+						<Route path={'/:brend/:id/'}  element={<Model  />} />
+						<Route path={'/:adidas/:id'}  element={<Model  />} />
 
 						<Route  path="/*" element={<Error404/>}> </Route>
 
